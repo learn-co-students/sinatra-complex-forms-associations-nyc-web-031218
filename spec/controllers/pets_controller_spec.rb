@@ -27,7 +27,6 @@ describe "Pets Controller" do
       expect(page).to have_field(:owner_name)
     end
 
-
     it "creates a new pet and associates an existing owner" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
@@ -35,6 +34,7 @@ describe "Pets Controller" do
       fill_in "pet_name", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
+
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
